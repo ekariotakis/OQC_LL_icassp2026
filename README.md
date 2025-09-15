@@ -1,6 +1,6 @@
 # Dense and Large Subgraph Detection via Lasry-Lions Double Envelopes - A Homotopy Approach
 
-This is a code repository for our submission in "2026 IEEE International Conference on Acoustics, Speech, and Signal Processing".
+This is a code repository for our submission in "2026 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)".
 
 ## Abstract
 

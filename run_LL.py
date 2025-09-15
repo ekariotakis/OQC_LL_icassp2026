@@ -32,7 +32,6 @@ def main():
     parser.add_argument('--dec-rate', type=float, default=0.9, metavar='R', help='Decrease Rate')
     parser.add_argument('--method', type=str, default='L-BFGS-B', metavar='S', help='Optimization Method')
     parser.add_argument('--max-iters', type=int, default=20, metavar='R', help='Maximum Number of Iterations')
-    parser.add_argument('--density-type', type=str, default='avg_deg', metavar='S', help='Density Type')
     
     args = parser.parse_args()
     dataset_name = copy.deepcopy(args.dataset_name)
@@ -45,7 +44,6 @@ def main():
     dec_rate = copy.deepcopy(args.dec_rate)
     method = copy.deepcopy(args.method)
     max_iters = copy.deepcopy(args.max_iters)
-    density_type = copy.deepcopy(args.density_type)
 
     print()
     print("------------------------------")
@@ -60,7 +58,7 @@ def main():
 
     A = nx.adjacency_matrix(G).astype(float)
     A = A.tocsr()
-    densest_onehop_indicator, densest_onehop_subgraph = utils.densest_onehop_neighborhood(G, density_type, alpha) 
+    densest_onehop_indicator, densest_onehop_subgraph = utils.densest_onehop_neighborhood(G) 
     
     GreedyOQC_R = peeling.GreedyOQC(G, 5, alpha)
     GreedyOQC_indicator = utils.indicator_from_subgraph(G, GreedyOQC_R[1])
@@ -114,8 +112,6 @@ def main():
     save_folder = logs_save_path+'/'+dataset_name
     save_path = save_folder+'/'+dataset_name+'_alpha'+'{:.2f}'.format(alpha)
     save_path = save_path+'_'+initialization
-    if initialization=='S_oh':
-        save_path = save_path+'_'+density_type
     save_path = save_path+'_iters'+str(max_iters)+'_log.npy'
     if not os.path.exists(save_folder):
         os.makedirs(save_folder)

@@ -6,7 +6,7 @@ import peeling
 import LL_optimization
 
 
-def densest_onehop_neighborhood(G, density_type='avg_deg', alpha=1/3):
+def densest_onehop_neighborhood(G):
     n = G.number_of_nodes()
     max_density = float('-inf')
     densest_node = None
@@ -28,11 +28,8 @@ def densest_onehop_neighborhood(G, density_type='avg_deg', alpha=1/3):
         # Total edges in the induced subgraph
         total_edges = edges_among_neighbors + len(neighbors)
         
-        # Compute density 
-        if density_type == 'avg_deg': # Average degree density = 2 * |E| / |V|
-            density = (total_edges) / neighborhood_size
-        elif density_type == 'OQC': # Objective function of OQC problem
-            density = peeling.compute_degree_function(neighborhood_size, total_edges, alpha=alpha)
+        # Compute density - Average degree density = 2 * |E| / |V|
+        density = (total_edges) / neighborhood_size
         
         if density > max_density:
             max_density = density

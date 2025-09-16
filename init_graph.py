@@ -12,10 +12,6 @@ def init_graph(dataset_name, source_path):
         G = nx.parse_edgelist(Data, delimiter=',', create_using=nx.Graph(),
                             nodetype=int, data=(('weight', float),))
     
-    elif "facebook_combined" in dataset_name:    
-        graph_path = source_path+dataset_name+"/facebook_combined.txt"
-        G = nx.read_edgelist(graph_path, create_using=nx.Graph(), nodetype = int)
-
     elif "web-Stanford" in dataset_name:    
 
         graph_path = source_path+"web-Stanford/web-Stanford.txt"
@@ -35,5 +31,23 @@ def init_graph(dataset_name, source_path):
 
         matrix = mmread(graph_path)
         G = nx.from_scipy_sparse_array(matrix)
+
+    elif "deezer" in dataset_name:    
+
+        graph_path = source_path+"deezer_europe/deezer_europe_edges.csv"
+
+        Data = open(graph_path, "r")
+        next(Data, None)  # skip the first line in the input file
+        G = nx.parse_edgelist(Data, delimiter=',', create_using=nx.Graph(),
+                              nodetype=int, data=(('weight', float),))
+
+    elif "lastfm" in dataset_name:    
+
+        graph_path = source_path+"lastfm_asia/lastfm_asia_edges.csv"
+
+        Data = open(graph_path, "r")
+        next(Data, None)  # skip the first line in the input file
+        G = nx.parse_edgelist(Data, delimiter=',', create_using=nx.Graph(),
+                            nodetype=int, data=(('weight', float),))
 
     return G

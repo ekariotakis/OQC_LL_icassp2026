@@ -3,7 +3,7 @@
 This is a code repository for our submission in "2026 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)".
 
 ## Abstract
-l
+Extracting large and dense subgraphs is a key task in graph mining applications. Pre-existing formulations are either overly restrictive (the maximum clique) or yield sparsely connected subgraphs (the densest subgraph problem). The optimal quasi-clique (OQC) problem allows extraction of large cliques and near-cliques of different sizes via a tunable parameter, but is NP-hard, with no principled optimization algorithm known. We propose a novel framework for OQC based on the Lasry-Lions (LL) double envelope for approximating OQC via a sequence of smooth subproblems within a homotopy framework. Experiments on real-world graphs show that our method outperforms the state-of-the-art greedy baseline for OQC, achieving better approximations of the size–density frontier and discovering large (near)-cliques that the baseline fails to detect.
 
 
 ## File Arrangement

@@ -34,3 +34,11 @@ Here we summarize all files present in this repo and their purpose.
 +-- plot_delta_iters.ipynb - plot_delta_S.ipynb: 
     jupyter notebooks to reproduce Figure 1 and 2 of the paper
 ```
+
+## Experimental Results
+
+
+
+![delta_vs_iters](figures/various_delta_vs_iters.png "Title")
+
+![delta_vs_size](figures/various_delta_vs_size.png "Title")

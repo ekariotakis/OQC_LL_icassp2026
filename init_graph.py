@@ -11,6 +11,12 @@ def init_graph(dataset_name, source_path):
         next(Data, None)  # skip the first line in the input file
         G = nx.parse_edgelist(Data, delimiter=',', create_using=nx.Graph(),
                             nodetype=int, data=(('weight', float),))
+
+    elif "caidaRouterLevel" in dataset_name:
+        graph_path = source_path+dataset_name+"/caidaRouterLevel.mtx"
+
+        matrix = mmread(graph_path)
+        G = nx.from_scipy_sparse_array(matrix)
     
     elif "web-Stanford" in dataset_name:    
 
@@ -25,12 +31,6 @@ def init_graph(dataset_name, source_path):
             delimiter="\t"              # columns are tab-separated
         )
         G = G_directed.to_undirected()
-
-    elif "caidaRouterLevel" in dataset_name:
-        graph_path = source_path+dataset_name+"/caidaRouterLevel.mtx"
-
-        matrix = mmread(graph_path)
-        G = nx.from_scipy_sparse_array(matrix)
 
     elif "deezer" in dataset_name:    
 

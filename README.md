@@ -14,6 +14,8 @@ Here we summarize all files present in this repo and their purpose.
     all the datasets used
 +-- logs/: 
     some precomputed logs
++-- figures/: 
+    example figures
 
 +-- LL_optimization.py: 
     implementation of our method
